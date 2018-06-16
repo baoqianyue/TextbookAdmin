@@ -1,5 +1,11 @@
 package main.java.controller;
 
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.svg.SVGGlyph;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.container.DefaultFlowContainer;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -7,25 +13,39 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.JavaFXBuilderFactory;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import main.java.app.Main;
-import main.java.bean.Teacher;
-import main.java.daoimpl.TeacherImpl;
+import main.java.app.MainApp;
+import sun.applet.Main;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
+
+    //登录用户类型标记
+    private static final int TYPE_TEACHER = 0x00;
+    private static final int TYPE_CLASS = 0x01;
+    private static final int TYPE_ADMIN = 0x02;
+    private int currentType = TYPE_CLASS;
 
 
     private Scene scene;
@@ -44,8 +64,17 @@ public class LoginController implements Initializable {
     @FXML
     private ChoiceBox imagePicker;
 
+    @FXMLViewFlowContext
+    private ViewFlowContext flowContext;
+
     private double xOffset;
     private double yOffset;
+
+    private MainApp app;
+
+    public void setApp(MainApp app) {
+        this.app = app;
+    }
 
     //初始化回调
     @Override
@@ -55,14 +84,14 @@ public class LoginController implements Initializable {
 
         //设置窗口拖放
         borderPane.setOnMousePressed(event -> {
-            xOffset = Main.getPrimaryStage().getX() - event.getSceneX();
-            yOffset = Main.getPrimaryStage().getY() - event.getSceneY();
+            xOffset = MainApp.getPrimaryStage().getX() - event.getSceneX();
+            yOffset = MainApp.getPrimaryStage().getY() - event.getSceneY();
             borderPane.setCursor(Cursor.CLOSED_HAND);
         });
 
         borderPane.setOnMouseDragged(event -> {
-            Main.getPrimaryStage().setX(event.getSceneX() + xOffset);
-            Main.getPrimaryStage().setY(event.getSceneY() + yOffset);
+            MainApp.getPrimaryStage().setX(event.getSceneX() + xOffset);
+            MainApp.getPrimaryStage().setY(event.getSceneY() + yOffset);
         });
 
         borderPane.setOnMouseReleased(event -> {
@@ -88,12 +117,16 @@ public class LoginController implements Initializable {
                         switch (newImg) {
                             case "班级登录":
                                 studentView.setVisible(true);
+                                currentType = TYPE_CLASS;
                                 break;
                             case "教师登录":
                                 teacherView.setVisible(true);
+                                currentType = TYPE_TEACHER;
                                 break;
                             case "管理员登录":
                                 adminView.setVisible(true);
+                                currentType = TYPE_ADMIN;
+                                break;
                         }
                     }
                 });
@@ -179,7 +212,24 @@ public class LoginController implements Initializable {
      * @throws Exception
      */
     public void loginButtonAction(ActionEvent actionEvent) throws Exception {
+        //todo
+        Stage stage = MainApp.getPrimaryStage();
+        Parent root = FXMLLoader.load(getClass().getResource("../../resources/layout/layout_main.fxml"));
 
+        stage.setTitle("教材征订与分发系统");
+
+        double width = 800;
+        double height = 600;
+        try {
+            Rectangle2D bounds = Screen.getScreens().get(0).getBounds();
+            width = bounds.getWidth() / 2.5;
+            height = bounds.getHeight() / 1.35;
+        } catch (Exception e) {
+        }
+
+        Scene scene = new Scene(root, width, height);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
@@ -189,7 +239,7 @@ public class LoginController implements Initializable {
      * @throws Exception
      */
     public void minimizeWindow(ActionEvent actionEvent) throws Exception {
-        Main.getPrimaryStage().setIconified(true);
+        MainApp.getPrimaryStage().setIconified(true);
     }
 
 
