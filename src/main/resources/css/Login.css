@@ -1,0 +1,33 @@
+#CloseBtn {
+    -fx-graphic: url("../image/cross.png");
+    -fx-background-color: transparent;
+    -fx-opacity: 1;
+}
+
+#CloseBtn:hover {
+    -fx-opacity: 0.5;
+}
+
+#CloseBtn:pressed {
+    -fx-opacity: 0.2;
+}
+
+#MinimizedBtn {
+    -fx-graphic: url("../image/line.png");
+    -fx-background-color: transparent;
+    -fx-opacity: 1;
+
+}
+
+#MinimizedBtn:hover {
+    -fx-opacity: 0.5;
+}
+
+#connetBtn {
+    -fx-padding: 0.7em 0.57em;
+    -fx-font-size: 14.0px;
+    -jfx-button-type: RAISED;
+    -fx-background-color: rgb(102.0, 153.0, 102.0);
+    -fx-pref-width: 200.0;
+    -fx-text-fill: WHITE;
+}
