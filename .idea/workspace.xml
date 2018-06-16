@@ -2,50 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4b56beae-8e04-4829-bd2e-0150fb686d50.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4b56beae-8e04-4829-bd2e-0150fb686d50/storage_v2/_src_/database/TextbookAdmin.Oa-RPw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4b56beae-8e04-4829-bd2e-0150fb686d50/storage_v2/_src_/database/TextbookAdmin.Oa-RPw/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfoenix_8_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TextbookAdmin.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/app/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/bean/Teacher.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/controller/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/dao/TeacherDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/daoimpl/TeacherImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/db/JDBCHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/utils/Statics.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/css/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/barack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/teacher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/layout/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bean/Teacher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/TeacherDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/daoimpl/TeacherImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/db/JDBCHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/Statics.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/barack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/image/teacher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/layout/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/app/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/bean/Teacher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/dao/TeacherDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/daoimpl/TeacherImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/db/JDBCHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/java/utils/Statics.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/css/Login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/barack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/cross.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/image/teacher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TextbookAdmin/main/resources/layout/Login.fxml" beforeDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,8 +112,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+            <state relative-caret-position="418">
+              <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -455,12 +426,12 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1529052309041" duration="7027000" />
       <workItem from="1529070447995" duration="3333000" />
-      <workItem from="1529112010907" duration="14820000" />
+      <workItem from="1529112010907" duration="15347000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26482000" />
+    <option name="totallyTimeSpent" value="27009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1927" y="-7" width="1550" height="878" extended-state="6" />
@@ -477,11 +448,11 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44609165" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32884097" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32793522" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="Database Console" weight="0.32884097" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.17024128" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.17024128" />
       <window_info anchor="right" id="Database" order="3" weight="0.1575067" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -711,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        <state relative-caret-position="418">
+          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
         </state>
       </provider>
     </entry>
