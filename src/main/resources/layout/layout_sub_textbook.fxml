@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <VBox maxWidth="800" maxHeight="800" spacing="10">
+        <children>
+            <HBox alignment="CENTER">
+                <Label styleClass="title-label">已征订教材记录</Label>
+                <Label styleClass="title-label" fx:id="treeTableViewCount" minWidth="80"></Label>
+                <JFXButton fx:id="treeTableViewAdd" styleClass="my-jfx-btn" text="添加教材"/>
+                <JFXButton fx:id="treeTableViewRemove" styleClass="my-jfx-btn"
+                           text="刪除教材"/>
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane StackPane.alignment="CENTER_RIGHT" maxWidth="200">
+                        <JFXTextField fx:id="searchField" promptText="Search..."></JFXTextField>
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="treeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="bnoColumn"
+                                        minWidth="133" text="教材编号" prefWidth="133"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="bNameColumn"
+                                        minWidth="133" text="教材名" prefWidth="133"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="tnoColumn" text="班主任教师号"
+                                        minWidth="133" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="bSubNumColumn" text="征订数量"
+                                        minWidth="133" resizable="false"></JFXTreeTableColumn>
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+</StackPane>
+

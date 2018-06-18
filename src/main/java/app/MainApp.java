@@ -1,31 +1,34 @@
 package main.java.app;
 
+import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.svg.SVGGlyph;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.flow.FlowHandler;
+import io.datafx.controller.flow.container.DefaultFlowContainer;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.fxml.JavaFXBuilderFactory;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import main.java.controller.LoginController;
 import main.java.controller.MainController;
-import sun.applet.Main;
 
-import java.io.InputStream;
 
 public class MainApp extends Application {
 
+    @FXMLViewFlowContext
+    private ViewFlowContext flowContext;
+
     //主布局(舞台)
     private static Stage primaryStage;
-    private Group root = new Group();
-
-    private static MainApp sInstance;
-
 
 
     @Override
@@ -36,9 +39,13 @@ public class MainApp extends Application {
         //取消系统默认装饰
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("教材征订与发放系统");
-//        primaryStage.getIcons().add(new Image(getClass().getClassLoader().getResource()))
+
         Scene mainScene = new Scene(root, 350, 420);
         mainScene.setRoot(root);
+        final ObservableList<String> stylesheets = mainScene.getStylesheets();
+        stylesheets.addAll(MainApp.class.getResource("../../resources/css/jfoenix-design.css").toExternalForm(),
+                MainApp.class.getResource("../../resources/css/jfoenix-main-demo.css").toExternalForm());
+
         primaryStage.setResizable(false);
         primaryStage.setScene(mainScene);
         primaryStage.show();
@@ -46,37 +53,25 @@ public class MainApp extends Application {
         primaryStage.setOnCloseRequest(event -> Platform.exit());
     }
 
-    public Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = MainApp.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(MainApp.class.getResource(fxml));
-        Pane pane;
-        try {
-            pane = loader.load(in);
-        } finally {
-            in.close();
-        }
-        root.requestFocus();
-        root.getChildren().removeAll();
-        root.getChildren().clear();
-        root.getChildren().addAll(pane);
 
-        return (Initializable) loader.getController();
-    }
+    /*    public Initializable replaceSceneContent(String fxml) throws Exception {
+            FXMLLoader loader = new FXMLLoader();
+            InputStream in = MainApp.class.getResourceAsStream(fxml);
+            loader.setBuilderFactory(new JavaFXBuilderFactory());
+            loader.setLocation(MainApp.class.getResource(fxml));
+            Pane pane;
+            try {
+                pane = loader.load(in);
+            } finally {
+                in.close();
+            }
+            root.requestFocus();
+            root.getChildren().removeAll();
+            root.getChildren().clear();
+            root.getChildren().addAll(pane);
 
-//    public void goToMain() {
-//        try {
-//            MainController main = (MainController) replaceSceneContent("../../resources/layout/layout_main.fxml");
-//            //设置主界面大小
-//            primaryStage.setWidth(1200);
-//            primaryStage.setHeight(700);
-//            main.setApp(this);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
+            return (Initializable) loader.getController();
+        }*/
     public static void main(String[] args) {
         launch(args);
     }

@@ -11,6 +11,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.app.MainApp;
+import main.java.utils.Statics;
 import sun.applet.Main;
 
 import java.io.InputStream;
@@ -97,6 +99,7 @@ public class LoginController implements Initializable {
         borderPane.setOnMouseReleased(event -> {
             borderPane.setCursor(Cursor.DEFAULT);
         });
+
 
         //选择不同的用户类型切换头像
         imagePicker.getSelectionModel().selectedItemProperty().addListener(
@@ -212,12 +215,22 @@ public class LoginController implements Initializable {
      * @throws Exception
      */
     public void loginButtonAction(ActionEvent actionEvent) throws Exception {
-        //todo
-        Stage stage = MainApp.getPrimaryStage();
-        Parent root = FXMLLoader.load(getClass().getResource("../../resources/layout/layout_main.fxml"));
+        //todo 验证登录
+        Statics.TYPE_CURR = "teacher";
 
-        stage.setTitle("教材征订与分发系统");
-
+        Stage primaryStage = MainApp.getPrimaryStage();
+        primaryStage.close();
+        //新建主窗口
+        Stage stage = new Stage();
+        stage.setTitle("教材征订与发放系统");
+        DefaultFlowContainer container = new DefaultFlowContainer();
+        flowContext = new ViewFlowContext();
+        flowContext.register("Stage", stage);
+        JFXDecorator decorator = new JFXDecorator(stage, container.getView());
+        Flow flow = new Flow(MainController.class);
+        flow.createHandler(flowContext).start(container);
+        decorator.setCustomMaximize(true);
+        decorator.setGraphic(new SVGGlyph(""));
         double width = 800;
         double height = 600;
         try {
@@ -227,10 +240,15 @@ public class LoginController implements Initializable {
         } catch (Exception e) {
         }
 
-        Scene scene = new Scene(root, width, height);
+        Scene scene = new Scene(decorator, width, height);
+        final ObservableList<String> stylesheets = scene.getStylesheets();
+        stylesheets.addAll(MainApp.class.getResource("../../resources/css/jfoenix-design.css").toExternalForm(),
+                MainApp.class.getResource("../../resources/css/jfoenix-main-demo.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+
     }
+
 
     /**
      * 最小化窗口
@@ -253,4 +271,5 @@ public class LoginController implements Initializable {
         Platform.exit();
         System.exit(0);
     }
+
 }

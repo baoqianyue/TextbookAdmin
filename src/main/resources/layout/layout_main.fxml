@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
-<?import com.jfoenix.controls.JFXToolbar?>
-<?import com.jfoenix.controls.JFXRippler?>
-<?import com.jfoenix.controls.JFXHamburger?>
-<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.*?>
 <?import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition?>
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml" fx:controller="main.java.controller.MainController">
-
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/8.0.101">
+    <!-- Header -->
     <BorderPane>
         <top>
             <VBox spacing="20">
                 <JFXToolbar>
                     <leftItems>
-                        <JFXRippler maskType="CIRCLE">
+                        <JFXRippler maskType="CIRCLE" style="-fx-ripple-color:WHITE;">
                             <StackPane fx:id="titleBurgerContainer">
                                 <JFXHamburger fx:id="titleBurger">
                                     <HamburgerBackArrowBasicTransition/>
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>教材征订与发放系统</Label>
+                        <Label>BarackBao</Label>
                     </leftItems>
                 </JFXToolbar>
             </VBox>
         </top>
 
+        <!-- Content Area -->
         <center>
             <JFXDrawer fx:id="drawer" defaultDrawerSize="250" direction="LEFT">
+                <styleClass>
+                    <String fx:value="body"/>
+                </styleClass>
             </JFXDrawer>
         </center>
     </BorderPane>
-
-
 </StackPane>
