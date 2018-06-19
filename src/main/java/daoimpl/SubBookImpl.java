@@ -1,9 +1,9 @@
 package main.java.daoimpl;
 
-import com.sun.deploy.util.StringUtils;
 import main.java.bean.BookSub;
 import main.java.dao.BookSubDao;
 import main.java.db.JDBCHelper;
+import main.java.utils.Toast;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +16,23 @@ import java.util.List;
 public class SubBookImpl implements BookSubDao {
     @Override
     public void addSubBook(BookSub sub) throws SQLException {
-
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "INSERT INTO BookSub VALUES(?,?,?,?)";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, sub.getBookId());
+            ps.setString(2, sub.getBookName());
+            ps.setString(3, sub.getTeacherId());
+            ps.setInt(4, sub.getSubBookNum());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("数据插入失败");
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
     }
 
     @Override
@@ -39,8 +55,21 @@ public class SubBookImpl implements BookSubDao {
     }
 
     @Override
-    public void deleteSubBook(BookSub sub) throws SQLException {
-
+    public void deleteSubBook(String bookId) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM BookSub WHERE Bno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, bookId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("数据删除失败");
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
     }
 
     @Override
@@ -48,7 +77,7 @@ public class SubBookImpl implements BookSubDao {
         Connection conn = null;
         Statement stat = null;
         ResultSet res = null;
-        BookSub sub = null;
+        BookSub sub;
         List<BookSub> subList = new ArrayList<>();
         try {
             conn = JDBCHelper.getsInstance().getConnection();

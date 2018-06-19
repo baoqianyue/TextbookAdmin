@@ -14,7 +14,7 @@ public interface BookSubDao {
     public void updateSubBook(BookSub sub) throws SQLException;
 
     //删除已征订的教材
-    public void deleteSubBook(BookSub sub) throws SQLException;
+    public void deleteSubBook(String bookId) throws SQLException;
 
     //查询所有已征订的教材
     public List<BookSub> queryAllSubBook() throws SQLException;
