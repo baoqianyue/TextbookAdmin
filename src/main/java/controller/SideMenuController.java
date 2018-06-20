@@ -82,7 +82,7 @@ public class SideMenuController {
 
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
-//        bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
         bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
 //        bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
 //        bindNodeToController(labelFive, slideContentController[1], contentFlow, contentFlowHandler);

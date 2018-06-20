@@ -18,6 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.java.bean.BookGrant;
+import main.java.bean.BookSub;
 import main.java.daoimpl.ClassImpl;
 import main.java.daoimpl.GrantBookImpl;
 import main.java.daoimpl.SubBookImpl;
@@ -143,21 +144,26 @@ public class TeacherAdminClassController {
                         return;
                     } else {
                         //向发放表中插入
+                        //在征订表中更新该教材的数量
                         try {
                             grantBookDB.addGrantBook(new BookGrant(bnoStr, clazzId, bnameStr, bnum));
+                            subBookDB.updateGrantBook(bnoStr, bnum);
+                            alert.hideWithAnimation();
+                            Toast.show(root, "发放成功");
                         } catch (SQLException e) {
                             Toast.show(root, "向发放表中插入失败");
                             e.printStackTrace();
+                            return;
                         }
-                        //在征订表中更新该教材的数量
-                        
-
                     }
 
                 } else {
                     Toast.show(root, "输入框不能为空");
                 }
             });
+            layout.setActions(commitBtn);
+            alert.setContent(layout);
+            alert.show();
         });
 
 

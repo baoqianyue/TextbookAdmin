@@ -19,13 +19,15 @@ public class SubBookImpl implements BookSubDao {
     @Override
     public int querySubBookNumById(String bno) throws SQLException {
         Connection conn = null;
-        Statement stat = null;
+        PreparedStatement stat = null;
         ResultSet res = null;
+        String sql = "SELECT Bsub FROM BookSub WHERE Bno=?";
         int bsubnum = 0;
         try {
             conn = JDBCHelper.getsInstance().getConnection();
-            stat = conn.createStatement();
-            res = stat.executeQuery("SELECT Bsub FROM BookSub WHERE Bno=" + bno);
+            stat = conn.prepareStatement(sql);
+            stat.setString(1, bno);
+            res = stat.executeQuery();
             if (res.next()) {
                 bsubnum = res.getInt(1);
             }
@@ -59,6 +61,33 @@ public class SubBookImpl implements BookSubDao {
         }
     }
 
+
+    /**
+     * 发放教材后更新征订表
+     *
+     * @param bno
+     * @param bnum
+     * @throws SQLException
+     */
+    @Override
+    public void updateGrantBook(String bno, int bnum) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE BookSub SET Bsub=Bsub-? WHERE Bno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, bnum);
+            ps.setString(2, bno);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("更新失败");
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
+    }
+
     @Override
     public void updateSubBook(BookSub sub) throws SQLException {
         Connection conn = null;
@@ -68,7 +97,7 @@ public class SubBookImpl implements BookSubDao {
             conn = JDBCHelper.getsInstance().getConnection();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, sub.getSubBookNum());
-            ps.setString(2, sub.getBookId().trim());
+            ps.setString(2, sub.getBookId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

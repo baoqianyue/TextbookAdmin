@@ -14,6 +14,8 @@ public interface BookSubDao {
     public void addSubBook(BookSub sub) throws SQLException;
 
     //更新已征订的教材
+    public void updateGrantBook(String bno, int bnum) throws SQLException;
+
     public void updateSubBook(BookSub sub) throws SQLException;
 
     //删除已征订的教材
@@ -21,7 +23,6 @@ public interface BookSubDao {
 
     //查询所有已征订的教材
     public List<BookSub> queryAllSubBook() throws SQLException;
-
 
 
 }

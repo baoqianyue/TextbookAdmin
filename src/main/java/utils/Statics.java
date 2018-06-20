@@ -1,5 +1,6 @@
 package main.java.utils;
 
+import main.java.controller.TextbookLibraryController;
 import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.controller.teacher.TextbookSubController;
 
@@ -33,7 +34,7 @@ public class Statics {
     //各用户侧边栏对应Controller
     public static Class[] teacherSlideController = new Class[]{
             TextbookSubController.class,
-            TextbookSubController.class,
+            TextbookLibraryController.class,
             TeacherAdminClassController.class,
             TextbookSubController.class,
             TextbookSubController.class,

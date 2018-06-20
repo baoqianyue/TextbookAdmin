@@ -4,9 +4,8 @@ import main.java.bean.TextBook;
 import main.java.dao.TextBookDao;
 import main.java.db.JDBCHelper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -74,6 +73,30 @@ public class TextbookImpl implements TextBookDao {
 
     @Override
     public List<TextBook> queryAllTextbook() throws SQLException {
-        return null;
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet res = null;
+        ArrayList<TextBook> list = new ArrayList<>();
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            stat = conn.createStatement();
+            res = stat.executeQuery("SELECT * FROM Textbook");
+            while (res.next()) {
+                TextBook book = new TextBook(
+                        res.getString(1),
+                        res.getString(2),
+                        res.getString(3),
+                        res.getInt(4),
+                        res.getString(5)
+                );
+                list.add(book);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("查询失败");
+        } finally {
+            JDBCHelper.closeConnection(res, stat, conn);
+        }
+        return list;
     }
 }
