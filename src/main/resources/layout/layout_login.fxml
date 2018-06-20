@@ -41,13 +41,13 @@
                            onAction="#loginButtonAction" GridPane.columnIndex="1"
                            GridPane.rowIndex="7" stylesheets="@../css/Login.css"/>
                 <Label text="Password: " textAlignment="CENTER" textFill="#669966" GridPane.rowIndex="5"/>
-                <TextField fx:id="usernameTextField" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                <TextField fx:id="passwordTextField" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
                 <Label text="Username: " textFill="#669966" GridPane.rowIndex="3">
                     <GridPane.margin>
                         <Insets/>
                     </GridPane.margin>
                 </Label>
-                <TextField fx:id="passwordTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <TextField fx:id="usernameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                 <StackPane GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
                         <ImageView fx:id="studentView" fitHeight="93" fitWidth="93" pickOnBounds="true"

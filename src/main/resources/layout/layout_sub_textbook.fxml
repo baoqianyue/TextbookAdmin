@@ -9,7 +9,7 @@
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
            xmlns="http://javafx.com/javafx/2.2">
-    <VBox maxWidth="800" maxHeight="600" spacing="10">
+    <VBox maxWidth="800" maxHeight="500" spacing="10">
         <children>
             <HBox alignment="CENTER">
                 <Label styleClass="title-label">已征订教材记录</Label>

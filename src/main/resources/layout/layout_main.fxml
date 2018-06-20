@@ -20,7 +20,7 @@
                                 </JFXHamburger>
                             </StackPane>
                         </JFXRippler>
-                        <Label>BarackBao</Label>
+                        <Label id="currentUserType"></Label>
                     </leftItems>
                 </JFXToolbar>
             </VBox>

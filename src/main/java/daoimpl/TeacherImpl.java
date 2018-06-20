@@ -4,13 +4,12 @@ import main.java.bean.Teacher;
 import main.java.dao.TeacherDao;
 import main.java.db.JDBCHelper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
  * 操作Teacher表实现类
+ * 具体的
  */
 public class TeacherImpl implements TeacherDao {
 
@@ -50,13 +49,47 @@ public class TeacherImpl implements TeacherDao {
 
     }
 
+
+    /**
+     * 教师登录,有两种权限，管理员和普通教师
+     *
+     * @param username
+     * @param password
+     * @param type     登录权限
+     * @return
+     * @throws SQLException
+     */
     @Override
-    public int validateLogin(String username, String password, String type) throws SQLException {
-        return 0;
+    public boolean validateLogin(String username, String password, String type) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        boolean isLogin;
+        String resPassword = null;
+        String sql = "SELECT Tpassword From Teacher WHERE Tno=? AND Tright=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, type);
+            res = ps.executeQuery();
+            if (res.next()) {
+                System.out.println(res.getString(1));
+                resPassword = res.getString(1).trim();
+            }
+            isLogin = resPassword.equals(password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("查询失败");
+        } finally {
+            JDBCHelper.closeConnection(res, ps, conn);
+        }
+        return isLogin;
     }
 
     @Override
     public List<Teacher> queryAllTeacher() throws SQLException {
         return null;
     }
+
 }

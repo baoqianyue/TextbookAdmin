@@ -21,10 +21,9 @@ public interface TeacherDao {
     public void deleteTeacher(Teacher teacher) throws SQLException;
 
     //教师或管理员登录查询操作
-    public int validateLogin(String username, String password, String type) throws SQLException;
+    public boolean validateLogin(String username, String password, String type) throws SQLException;
 
     //查询所有教师信息
     public List<Teacher> queryAllTeacher() throws SQLException;
-
 
 }

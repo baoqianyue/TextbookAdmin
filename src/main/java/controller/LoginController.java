@@ -2,6 +2,7 @@ package main.java.controller;
 
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyph;
+import io.datafx.controller.ViewController;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
@@ -32,7 +33,11 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.app.MainApp;
+import main.java.daoimpl.TeacherImpl;
+import main.java.db.JDBCHelper;
 import main.java.utils.Statics;
+import main.java.utils.TextUtils;
+import main.java.utils.Toast;
 import sun.applet.Main;
 
 import java.io.InputStream;
@@ -47,7 +52,8 @@ public class LoginController implements Initializable {
     private static final int TYPE_TEACHER = 0x00;
     private static final int TYPE_CLASS = 0x01;
     private static final int TYPE_ADMIN = 0x02;
-    private int currentType = TYPE_CLASS;
+
+    private int currentType;
 
 
     private Scene scene;
@@ -216,7 +222,35 @@ public class LoginController implements Initializable {
      */
     public void loginButtonAction(ActionEvent actionEvent) throws Exception {
         //todo 验证登录
-        Statics.TYPE_CURR = "teacher";
+        /*String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.show(borderPane, "输入框不能为空");
+            return;
+        } else {
+            switch (currentType) {
+                case TYPE_TEACHER:
+                    TeacherImpl teacherDB = new TeacherImpl();
+                    if (!teacherDB.validateLogin(username, password, Statics.SIMPLE_TEACHER)) {
+                        Toast.show(borderPane, "用户名或密码错误");
+                        return;
+                    } else {
+                        Statics.TYPE_CURR = Statics.TYPE_TEACHRE;
+                    }
+                    break;
+                case TYPE_ADMIN:
+                    TeacherImpl teacherDB1 = new TeacherImpl();
+                    if (!teacherDB1.validateLogin(username, password, Statics.ADMIN_TEACHER)) {
+                        Toast.show(borderPane, "用户名或密码权限错误");
+                        return;
+                    } else {
+                        Statics.TYPE_CURR = Statics.TYPE_ADMIN;
+                    }
+                    break;
+            }
+        }*/
+        Statics.TYPE_CURR = Statics.TYPE_TEACHRE;
+        Statics.CURR_USERNAME = "T160701";
 
         Stage primaryStage = MainApp.getPrimaryStage();
         primaryStage.close();

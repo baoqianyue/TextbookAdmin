@@ -24,9 +24,6 @@ public class Teacher {
         this.password = password;
     }
 
-    public Teacher() {
-
-    }
 
     public String getId() {
         return id;

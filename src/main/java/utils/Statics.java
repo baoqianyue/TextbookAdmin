@@ -1,5 +1,6 @@
 package main.java.utils;
 
+import main.java.controller.LoginController;
 import main.java.controller.TextbookSubController;
 
 import java.util.ArrayList;
@@ -16,8 +17,10 @@ public class Statics {
     public static final String PASSWORD = "123456";
 
     //教师身份标记
-    public static final int SIMPLE_TEACHER = 1;
-    public static final int ADMIN_TEACHER = 0;
+    public static final String SIMPLE_TEACHER = "0";
+    public static final String ADMIN_TEACHER = "1";
+    //当前用户的用户名,在查询每个老师所管理的班级时会用到
+    public static String CURR_USERNAME;
 
     //用户身份标记
     public static final String TYPE_TEACHRE = "teacher";
@@ -28,12 +31,12 @@ public class Statics {
 
     //各用户侧边栏内容
     public static String[] teacherSlideTitle = new String[]{
-            "教材征订与管理", "教材库", "查看所管理班级", "个人信息管理"
+            "教材征订与管理", "教材库", "查看所管理班级", "个人信息管理", "退出登录"
     };
 
     //各用户侧边栏对应Controller
     public static Class[] teacherSlideController = new Class[]{
-            TextbookSubController.class
+            TextbookSubController.class,
     };
 
 

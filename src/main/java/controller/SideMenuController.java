@@ -37,6 +37,10 @@ public class SideMenuController {
     @ActionTrigger("labelFour")
     private Label labelFour;
     @FXML
+    @ActionTrigger("labelFive")
+    private Label labelFive;
+
+    @FXML
     private JFXListView<Label> sideList;
 
     private static String[] slideContentTitle;
@@ -55,6 +59,7 @@ public class SideMenuController {
         labelTwo.setText(slideContentTitle[1]);
         labelThree.setText(slideContentTitle[2]);
         labelFour.setText(slideContentTitle[3]);
+        labelFive.setText(slideContentTitle[4]);
         Objects.requireNonNull(context, "context");
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
         sideList.propagateMouseEventsToParent();
@@ -79,6 +84,7 @@ public class SideMenuController {
 //        bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
 //        bindNodeToController(combobox, ComboBoxController.class, contentFlow, contentFlowHandler);
 //        bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
+//        bindNodeToController(labelFive, slideContentController[1], contentFlow, contentFlowHandler);
 
     }
 
