@@ -14,6 +14,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.utils.Statics;
 
 import javax.annotation.PostConstruct;
@@ -82,7 +83,7 @@ public class SideMenuController {
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
 //        bindNodeToController(checkbox, CheckboxController.class, contentFlow, contentFlowHandler);
-//        bindNodeToController(combobox, ComboBoxController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
 //        bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
 //        bindNodeToController(labelFive, slideContentController[1], contentFlow, contentFlowHandler);
 

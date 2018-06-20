@@ -11,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import main.java.controller.teacher.TextbookSubController;
 import main.java.datafx.ExtendedAnimatedFlowContainer;
-import main.java.db.JDBCHelper;
 import main.java.utils.Statics;
 
 import javax.annotation.PostConstruct;

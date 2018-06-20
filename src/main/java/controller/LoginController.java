@@ -222,7 +222,7 @@ public class LoginController implements Initializable {
      */
     public void loginButtonAction(ActionEvent actionEvent) throws Exception {
         //todo 验证登录
-        /*String username = usernameTextField.getText();
+        String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             Toast.show(borderPane, "输入框不能为空");
@@ -248,7 +248,7 @@ public class LoginController implements Initializable {
                     }
                     break;
             }
-        }*/
+        }
         Statics.TYPE_CURR = Statics.TYPE_TEACHRE;
         Statics.CURR_USERNAME = "T160701";
 

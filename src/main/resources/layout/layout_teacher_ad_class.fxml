@@ -1,5 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
 
+    <VBox maxWidth="800" maxHeight="500" spacing="10">
+        <children>
+            <HBox alignment="CENTER">
+                <Label styleClass="title-label">所管理班级</Label>
+                <Label styleClass="title-label" fx:id="treeTableViewCount" minWidth="80"></Label>
+                <JFXButton fx:id="grantTextbookBtn" styleClass="my-jfx-btn" text="发放教材"/>
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane StackPane.alignment="CENTER_RIGHT" maxWidth="200">
+                        <JFXTextField fx:id="searchField" promptText="Search..."></JFXTextField>
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="treeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="cnoColumn"
+                                        minWidth="133" text="班号" prefWidth="122"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="cnumColumn"
+                                        minWidth="133" text="班级人数" prefWidth="122"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="cnoTelColumn" text="班级联系方式"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="leaderSnoColumn" text="班长学号"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="leaderSnameColumn" text="班长姓名"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="spasswordColumn" text="班级密码"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+
+
+</StackPane>
 
 

@@ -1,11 +1,7 @@
 package main.java.utils;
 
-import main.java.controller.LoginController;
-import main.java.controller.TextbookSubController;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import main.java.controller.teacher.TeacherAdminClassController;
+import main.java.controller.teacher.TextbookSubController;
 
 /**
  * 存放一些常量
@@ -31,12 +27,17 @@ public class Statics {
 
     //各用户侧边栏内容
     public static String[] teacherSlideTitle = new String[]{
-            "教材征订与管理", "教材库", "查看所管理班级", "个人信息管理", "退出登录"
+            "教材征订与管理", "教材库", "所管理班级并发放", "个人信息管理", "退出登录"
     };
 
     //各用户侧边栏对应Controller
     public static Class[] teacherSlideController = new Class[]{
             TextbookSubController.class,
+            TextbookSubController.class,
+            TeacherAdminClassController.class,
+            TextbookSubController.class,
+            TextbookSubController.class,
+
     };
 
 

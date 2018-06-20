@@ -7,6 +7,9 @@ import java.util.List;
 
 public interface BookSubDao {
 
+    //查询一本教材的征订数量
+    public int querySubBookNumById(String bno) throws SQLException;
+
     //增加征订一本教材
     public void addSubBook(BookSub sub) throws SQLException;
 
@@ -18,6 +21,7 @@ public interface BookSubDao {
 
     //查询所有已征订的教材
     public List<BookSub> queryAllSubBook() throws SQLException;
+
 
 
 }

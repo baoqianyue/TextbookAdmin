@@ -1,4 +1,4 @@
-package main.java.controller;
+package main.java.controller.teacher;
 
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.cells.editors.IntegerTextFieldEditorBuilder;
@@ -33,7 +33,7 @@ import java.util.function.Function;
 
 import static javafx.scene.control.TreeTableColumn.*;
 
-@ViewController(value = "../../resources/layout/layout_sub_textbook.fxml")
+@ViewController(value = "../../../resources/layout/layout_sub_textbook.fxml")
 public class TextbookSubController {
 
     private static final String PREFIX = "( ";
@@ -57,8 +57,6 @@ public class TextbookSubController {
     private JFXButton treeTableViewRemove;
     @FXML
     private Label treeTableViewCount;
-
-    private JFXDialogLayout dialogLayout;
 
     private SubBookImpl subBookDB;
 

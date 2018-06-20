@@ -14,6 +14,30 @@ import java.util.List;
  * 操作BookSub表具体实现类
  */
 public class SubBookImpl implements BookSubDao {
+
+
+    @Override
+    public int querySubBookNumById(String bno) throws SQLException {
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet res = null;
+        int bsubnum = 0;
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            stat = conn.createStatement();
+            res = stat.executeQuery("SELECT Bsub FROM BookSub WHERE Bno=" + bno);
+            if (res.next()) {
+                bsubnum = res.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("查询数据失败");
+        } finally {
+            JDBCHelper.closeConnection(res, stat, conn);
+        }
+        return bsubnum;
+    }
+
     @Override
     public void addSubBook(BookSub sub) throws SQLException {
         Connection conn = null;

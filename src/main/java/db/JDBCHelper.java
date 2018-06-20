@@ -21,7 +21,6 @@ public class JDBCHelper {
 
     }
 
-
     //单例模式
     public static JDBCHelper getsInstance() {
         if (null == sInstance) {
