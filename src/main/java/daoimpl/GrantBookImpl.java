@@ -1,13 +1,12 @@
 package main.java.daoimpl;
 
 import main.java.bean.BookGrant;
+import main.java.bean.ClassGetBook;
 import main.java.dao.BookGrantDao;
 import main.java.db.JDBCHelper;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +43,37 @@ public class GrantBookImpl implements BookGrantDao {
 
     @Override
     public void deleteGrantBook(BookGrant bookGrant) throws SQLException {
+
+    }
+
+    @Override
+    public List<ClassGetBook> queryAllGetBook(String cno) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        ArrayList<ClassGetBook> data = new ArrayList<>();
+        String sql = "SELECT Bno,Bname,Sno,Sname,Bissue FROM BookGrant,Class WHERE BookGrant.Cno = Class.Cno AND" +
+                "BookGrant.Cno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, cno);
+            res = ps.executeQuery();
+            while (res.next()) {
+                ClassGetBook getBook = new ClassGetBook(
+                        res.getString(1), res.getString(2),
+                        res.getString(3), res.getString(4),
+                        res.getInt(5)
+                );
+                data.add(getBook);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("查询失败");
+        } finally {
+            JDBCHelper.closeConnection(res, ps, conn);
+        }
+        return data;
 
     }
 

@@ -71,7 +71,7 @@ public class PersonController {
             textfieldFive.setPromptText("电话: " + teacher.getTel());
             textfieldSix.setPromptText("邮箱： " + teacher.getEmail());
             textfieldSeven.setPromptText("密码: " + teacher.getPassword());
-
+            textfieldSeven.setDisable(true);
             commitBtn.setOnAction(event -> {
                 String newName = textfieldTwo.getText();
                 String newSex = textfieldThree.getText();
@@ -83,7 +83,7 @@ public class PersonController {
                         && !TextUtils.isEmpty(newPassword)) {
                     try {
                         teacherDB.updateTeacher(new Teacher(
-                                teacher.getId(), newName, newSex, teacher.getRight(), newTel, newEmail, newPassword
+                                teacher.getId(), newName, newSex, teacher.getRight(), newTel, newEmail, teacher.getPassword()
                         ));
                         Toast.show(root, "修改信息成功");
                     } catch (SQLException e) {
@@ -106,6 +106,32 @@ public class PersonController {
             textfieldFive.setPromptText(clazz.getLeaderId());
             textfieldSix.setPromptText(clazz.getLeaderName());
             textfieldSeven.setPromptText(clazz.getClassPassword());
+            textfieldSeven.setDisable(true);
+            commitBtn.setOnAction(event -> {
+                String newTeacherId = textfieldTwo.getText();
+                int newClassNum = Integer.parseInt(textfieldThree.getText());
+                String newClassTel = textfieldFour.getText();
+                String newLeaderId = textfieldFive.getText();
+                String newLeaderName = textfieldSix.getText();
+                if (!TextUtils.isEmpty(newTeacherId) && !TextUtils.isEmpty(String.valueOf(newClassNum))
+                        && !TextUtils.isEmpty(newClassTel) && !TextUtils.isEmpty(newLeaderId)
+                        && !TextUtils.isEmpty(newLeaderName)) {
+                    Clazz clayy = new Clazz(clazz.getClassId(), newTeacherId, newClassNum, newClassTel,
+                            newLeaderId, newLeaderName, clazz.getClassPassword());
+                    try {
+                        classDB.updateClass(clayy);
+                        Toast.show(root, "修改信息成功");
+                    } catch (SQLException e) {
+                        Toast.show(root, "修改信息失败");
+                        e.printStackTrace();
+                        return;
+                    }
+                } else {
+                    Toast.show(root, "输入框不能为空");
+                    return;
+                }
+            });
+
         }
 
     }

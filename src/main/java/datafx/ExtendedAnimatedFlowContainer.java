@@ -18,9 +18,7 @@ import javafx.util.Duration;
 import java.util.List;
 import java.util.function.Function;
 
-/**
- * A {@link FlowContainer} that supports animation for the view change.
- */
+
 public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer implements FlowContainer<StackPane> {
 
     private final StackPane view;
@@ -29,40 +27,23 @@ public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer impleme
     private Timeline animation;
     private final ImageView placeholder;
 
-    /**
-     * Defaults constructor that creates a container with a fade animation that last 320 ms.
-     */
+
     public ExtendedAnimatedFlowContainer() {
         this(Duration.millis(320));
     }
 
-    /**
-     * Creates a container with a fade animation and the given duration.
-     *
-     * @param duration the duration of the animation
-     */
+
     public ExtendedAnimatedFlowContainer(Duration duration) {
         this(duration, ContainerAnimations.FADE);
     }
 
-    /**
-     * Creates a container with the given animation type and  duration.
-     *
-     * @param duration  the duration of the animation
-     * @param animation the animation type
-     */
+
     public ExtendedAnimatedFlowContainer(Duration duration, ContainerAnimations animation) {
         this(duration, animation.getAnimationProducer());
     }
 
-    /**
-     * Creates a container with the given animation type and duration.
-     *
-     * @param duration          the duration of the animation
-     * @param animationProducer the {@link KeyFrame} instances that define the animation
-     */
     public ExtendedAnimatedFlowContainer(Duration duration, Function<AnimatedFlowContainer, List<KeyFrame>>
-        animationProducer) {
+            animationProducer) {
         this.view = new StackPane();
         this.duration = duration;
         this.animationProducer = animationProducer;
@@ -87,21 +68,12 @@ public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer impleme
         animation.play();
     }
 
-    /**
-     * Returns the {@link ImageView} instance that is used as a placeholder for the old view in each navigation
-     * animation.
-     *
-     * @return image view place holder
-     */
+
     public ImageView getPlaceholder() {
         return placeholder;
     }
 
-    /**
-     * Returns the duration for the animation.
-     *
-     * @return the duration for the animation
-     */
+
     public Duration getDuration() {
         return duration;
     }
@@ -119,7 +91,7 @@ public class ExtendedAnimatedFlowContainer extends AnimatedFlowContainer impleme
             SnapshotParameters parameters = new SnapshotParameters();
             parameters.setFill(Color.TRANSPARENT);
             Image placeholderImage = view.snapshot(parameters,
-                new WritableImage((int) view.getWidth(), (int) view.getHeight()));
+                    new WritableImage((int) view.getWidth(), (int) view.getHeight()));
             placeholder.setImage(placeholderImage);
             placeholder.setFitWidth(placeholderImage.getWidth());
             placeholder.setFitHeight(placeholderImage.getHeight());

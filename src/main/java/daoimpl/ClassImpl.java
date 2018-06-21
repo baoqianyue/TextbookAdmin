@@ -20,13 +20,58 @@ public class ClassImpl implements ClazzDao {
     }
 
     @Override
-    public void updateClass(String classId) throws SQLException {
-
+    public void updateClass(Clazz clazz) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE Class SET Tno=?,Cnum=?,Stel=?,Sno=?,Sname=? WHERE Cno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, clazz.getTeacherId());
+            ps.setInt(2, clazz.getClassNum());
+            ps.setString(3, clazz.getClassTel());
+            ps.setString(4, clazz.getLeaderId());
+            ps.setString(5, clazz.getLeaderName());
+            ps.setString(6, clazz.getClassId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
     }
 
     @Override
     public void deleteClass(String classId) throws SQLException {
 
+    }
+
+    @Override
+    public boolean validateClassLogin(String username, String password) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        String resPassword = null;
+        boolean isLogin;
+        String sql = "SELECT Spassword FROM Class WHERE Cno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            res = ps.executeQuery();
+            if (res.next()) {
+                resPassword = res.getString(1).trim();
+                isLogin = resPassword.equals(password);
+            } else {
+                isLogin = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("查询失败");
+        } finally {
+            JDBCHelper.closeConnection(res, ps, conn);
+        }
+        return isLogin;
     }
 
     @Override

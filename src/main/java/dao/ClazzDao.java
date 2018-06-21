@@ -11,10 +11,13 @@ public interface ClazzDao {
     public void addClass(Clazz clazz) throws SQLException;
 
     //更新一个班级信息
-    public void updateClass(String classId) throws SQLException;
+    public void updateClass(Clazz clazz) throws SQLException;
 
     //删除一个班级
     public void deleteClass(String classId) throws SQLException;
+
+    //验证班级登录
+    public boolean validateClassLogin(String username, String password) throws SQLException;
 
     //根据id查询一个班级记录
     public Clazz queryClassById(String cno) throws SQLException;

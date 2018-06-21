@@ -118,6 +118,11 @@ public final class MainController {
                 currentUserType.setText(Statics.TYPE_ADMIN);
                 innerFlow = new Flow(TextbookSubController.class);
                 break;
+            case Statics.TYPE_CLASS:
+                currentUserType.setText(Statics.TYPE_CLASS);
+                innerFlow = new Flow(TextbookLibraryController.class);
+                break;
+
         }
 
         final FlowHandler flowHandler = innerFlow.createHandler(context);

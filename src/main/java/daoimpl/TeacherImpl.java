@@ -92,10 +92,13 @@ public class TeacherImpl implements TeacherDao {
             ps.setString(2, type);
             res = ps.executeQuery();
             if (res.next()) {
-                System.out.println(res.getString(1));
                 resPassword = res.getString(1).trim();
+                System.out.println(resPassword);
+                System.out.println(password);
+                isLogin = resPassword.equals(password);
+            } else {
+                isLogin = false;
             }
-            isLogin = resPassword.equals(password);
         } catch (SQLException e) {
             e.printStackTrace();
             throw new SQLException("查询失败");

@@ -33,7 +33,7 @@
     </database>
     <schema id="10" parent="2" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2018-06-21.04:44:59.330</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-06-21.22:07:55.207</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -74,9 +74,9 @@
       <ObjectId>16393</ObjectId>
     </schema>
     <table id="23" parent="10" name="BookGrant">
-      <ObjectId>789577851</ObjectId>
-      <CreatedTimestamp>2018-06-18.05:32:15.983</CreatedTimestamp>
-      <ModifiedTimestamp>2018-06-18.05:32:15.983</ModifiedTimestamp>
+      <ObjectId>933578364</ObjectId>
+      <CreatedTimestamp>2018-06-21.22:07:55.067</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-21.22:07:55.067</ModifiedTimestamp>
     </table>
     <table id="24" parent="10" name="BookSub">
       <ObjectId>837578022</ObjectId>
@@ -86,7 +86,7 @@
     <table id="25" parent="10" name="Class">
       <ObjectId>613577224</ObjectId>
       <CreatedTimestamp>2018-06-18.03:02:47.870</CreatedTimestamp>
-      <ModifiedTimestamp>2018-06-18.05:32:16.040</ModifiedTimestamp>
+      <ModifiedTimestamp>2018-06-21.22:07:55.070</ModifiedTimestamp>
     </table>
     <table id="26" parent="10" name="Teacher">
       <ObjectId>245575913</ObjectId>
@@ -117,27 +117,29 @@
       <Position>4</Position>
       <DataType>smallint|0s</DataType>
     </column>
-    <index id="32" parent="23" name="PK__BookGran__C6D139AA9393E826">
+    <index id="32" parent="23" name="PK__BookGran__EACEDF9D45EF7A75">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>Bno</ColNames>
+      <ColNames>Bno
+Cno</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="33" parent="23" name="PK__BookGran__C6D139AA9393E826">
-      <ObjectId>805577908</ObjectId>
+    <key id="33" parent="23" name="PK__BookGran__EACEDF9D45EF7A75">
+      <ObjectId>949578421</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2018-06-18.05:32:16.033</CreatedTimestamp>
-      <ModifiedTimestamp>2018-06-18.05:32:16.033</ModifiedTimestamp>
-      <ColNames>Bno</ColNames>
-      <UnderlyingIndexName>PK__BookGran__C6D139AA9393E826</UnderlyingIndexName>
+      <CreatedTimestamp>2018-06-21.22:07:55.070</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-21.22:07:55.070</ModifiedTimestamp>
+      <ColNames>Bno
+Cno</ColNames>
+      <UnderlyingIndexName>PK__BookGran__EACEDF9D45EF7A75</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="34" parent="23" name="FK__BookGrant__Cno__30F848ED">
-      <ObjectId>821577965</ObjectId>
+    <foreign-key id="34" parent="23" name="FK__BookGrant__Cno__398D8EEE">
+      <ObjectId>965578478</ObjectId>
       <NameSurrogate>1</NameSurrogate>
-      <CreatedTimestamp>2018-06-18.05:32:16.033</CreatedTimestamp>
-      <ModifiedTimestamp>2018-06-18.05:32:16.033</ModifiedTimestamp>
+      <CreatedTimestamp>2018-06-21.22:07:55.070</CreatedTimestamp>
+      <ModifiedTimestamp>2018-06-21.22:07:55.070</ModifiedTimestamp>
       <ColNames>Cno</ColNames>
       <RefTableId>613577224</RefTableId>
       <RefSchemaName>dbo</RefSchemaName>

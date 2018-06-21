@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+
+    <VBox maxWidth="800" maxHeight="500" spacing="10">
+        <children>
+            <HBox alignment="CENTER">
+                <Label styleClass="title-label">要领取的教材</Label>
+                <Label styleClass="title-label" fx:id="treeTableViewCount" minWidth="80"></Label>
+                <JFXButton fx:id="getTextbookBtn" styleClass="my-jfx-btn" text="领取教材"/>
+                <StackPane HBox.hgrow="ALWAYS">
+                    <StackPane StackPane.alignment="CENTER_RIGHT" maxWidth="200">
+                        <JFXTextField fx:id="searchField" promptText="Search..."></JFXTextField>
+                    </StackPane>
+                </StackPane>
+            </HBox>
+            <JFXTreeTableView fx:id="treeTableView">
+                <columns>
+                    <JFXTreeTableColumn fx:id="bnoColumn"
+                                        minWidth="133" text="教材编号" prefWidth="122"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="bnameColumn"
+                                        minWidth="133" text="教材名" prefWidth="122"
+                                        resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="leaderSnoColumn" text="班长学号"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="leaderNameColumn" text="班长姓名"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+                    <JFXTreeTableColumn fx:id="getBookNumColumn" text="领取数量"
+                                        minWidth="122" resizable="false"></JFXTreeTableColumn>
+
+                </columns>
+            </JFXTreeTableView>
+        </children>
+    </VBox>
+
+
+</StackPane>

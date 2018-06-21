@@ -14,10 +14,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import main.java.app.MainApp;
-import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.utils.Statics;
 
 import javax.annotation.PostConstruct;
@@ -58,8 +56,45 @@ public class SideMenuController {
             case Statics.TYPE_TEACHRE:
                 slideContentTitle = Statics.teacherSlideTitle;
                 slideContentController = Statics.teacherSlideController;
+                initTeacherSlide();
+                break;
+            case Statics.TYPE_CLASS:
+                slideContentTitle = Statics.classSlideTitle;
+                slideContentController = Statics.classSlideController;
+                initClassSlide();
                 break;
         }
+
+
+//        bindNodeToController(labelFive, slideContentController[4], contentFlow, contentFlowHandler);
+
+    }
+
+    private void initClassSlide() {
+        Objects.requireNonNull(context, "context");
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        sideList.propagateMouseEventsToParent();
+        initFlow(contentFlowHandler);
+        labelOne.setText(slideContentTitle[0]);
+        labelTwo.setText(slideContentTitle[1]);
+        labelThree.setText(slideContentTitle[2]);
+        labelFour.setText(slideContentTitle[3]);
+        labelFour.setOnMouseClicked(event -> {
+            Stage stage = (Stage) labelFour.getScene().getWindow();
+            stage.close();
+            MainApp.getPrimaryStage().show();
+        });
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
+        bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
+    }
+
+    public void initTeacherSlide() {
+        Objects.requireNonNull(context, "context");
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        sideList.propagateMouseEventsToParent();
+        initFlow(contentFlowHandler);
+
         labelOne.setText(slideContentTitle[0]);
         labelTwo.setText(slideContentTitle[1]);
         labelThree.setText(slideContentTitle[2]);
@@ -70,9 +105,16 @@ public class SideMenuController {
             stage.close();
             MainApp.getPrimaryStage().show();
         });
-        Objects.requireNonNull(context, "context");
-        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
-        sideList.propagateMouseEventsToParent();
+
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
+        bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
+        bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
+        bindNodeToController(labelFour, slideContentController[3], contentFlow, contentFlowHandler);
+
+    }
+
+    private void initFlow(FlowHandler contentFlowHandler) {
         sideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
             new Thread(() -> {
                 Platform.runLater(() -> {
@@ -88,14 +130,6 @@ public class SideMenuController {
                 });
             }).start();
         });
-
-        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
-        bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
-        bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
-        bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
-        bindNodeToController(labelFour, slideContentController[3], contentFlow, contentFlowHandler);
-//        bindNodeToController(labelFive, slideContentController[4], contentFlow, contentFlowHandler);
-
     }
 
 

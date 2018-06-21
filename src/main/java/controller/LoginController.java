@@ -33,6 +33,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import main.java.app.MainApp;
+import main.java.daoimpl.ClassImpl;
 import main.java.daoimpl.TeacherImpl;
 import main.java.db.JDBCHelper;
 import main.java.utils.Statics;
@@ -55,7 +56,7 @@ public class LoginController implements Initializable {
     private static final int TYPE_CLASS = 0x01;
     private static final int TYPE_ADMIN = 0x02;
 
-    private int currentType;
+    private int currentType = TYPE_CLASS;
 
 
     private Scene scene;
@@ -110,6 +111,7 @@ public class LoginController implements Initializable {
         });
 
 
+        //li
         //选择不同的用户类型切换头像
         imagePicker.getSelectionModel().selectedItemProperty().addListener(
                 (ChangeListener<String>) (observable, oldImg, newImg) -> {
@@ -217,7 +219,7 @@ public class LoginController implements Initializable {
     }
 
 
-    /**
+    /**li
      * 登录逻辑
      *
      * @param actionEvent
@@ -225,7 +227,7 @@ public class LoginController implements Initializable {
      */
     public void loginButtonAction(ActionEvent actionEvent) throws Exception {
         //todo 验证登录
-        /*String username = usernameTextField.getText();
+        String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             Toast.show(borderPane, "输入框不能为空");
@@ -239,6 +241,7 @@ public class LoginController implements Initializable {
                         return;
                     } else {
                         Statics.TYPE_CURR = Statics.TYPE_TEACHRE;
+                        Statics.CURR_USERNAME = username;
                     }
                     break;
                 case TYPE_ADMIN:
@@ -248,12 +251,21 @@ public class LoginController implements Initializable {
                         return;
                     } else {
                         Statics.TYPE_CURR = Statics.TYPE_ADMIN;
+                        Statics.CURR_USERNAME = username;
+                    }
+                    break;
+                case TYPE_CLASS:
+                    ClassImpl classDB = new ClassImpl();
+                    if (!classDB.validateClassLogin(username, password)) {
+                        Toast.show(borderPane, "用户名或密码错误");
+                        return;
+                    } else {
+                        Statics.TYPE_CURR = Statics.TYPE_CLASS;
+                        Statics.CURR_USERNAME = username;
                     }
                     break;
             }
-        }*/
-        Statics.TYPE_CURR = Statics.TYPE_TEACHRE;
-        Statics.CURR_USERNAME = "T160701";
+        }
 
         Stage primaryStage = MainApp.getPrimaryStage();
         primaryStage.close();
