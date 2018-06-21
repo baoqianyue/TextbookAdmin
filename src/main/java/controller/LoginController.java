@@ -40,11 +40,13 @@ import main.java.utils.TextUtils;
 import main.java.utils.Toast;
 import sun.applet.Main;
 
+import javax.annotation.PostConstruct;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+@ViewController(value = "../../resources/layout/layout_login.fxml")
 public class LoginController implements Initializable {
 
 
@@ -85,6 +87,7 @@ public class LoginController implements Initializable {
     }
 
     //初始化回调
+    @PostConstruct
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //默认显示班级登录

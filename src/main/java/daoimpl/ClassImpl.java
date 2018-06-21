@@ -29,6 +29,31 @@ public class ClassImpl implements ClazzDao {
 
     }
 
+    @Override
+    public Clazz queryClassById(String cno) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        Clazz clazz = null;
+        String sql = "SELECT * FROM Class WHERE Cno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, cno);
+            res = ps.executeQuery();
+            if (res.next()) {
+                clazz = new Clazz(cno, res.getString(2), res.getInt(3),
+                        res.getString(4), res.getString(5), res.getString(6),
+                        res.getString(7));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCHelper.closeConnection(res, ps, conn);
+        }
+        return clazz;
+    }
+
     /**
      * 根据教师号来查询所管理的班级
      *

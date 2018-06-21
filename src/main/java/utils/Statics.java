@@ -1,5 +1,7 @@
 package main.java.utils;
 
+import main.java.controller.LoginController;
+import main.java.controller.PersonController;
 import main.java.controller.TextbookLibraryController;
 import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.controller.teacher.TextbookSubController;
@@ -36,8 +38,8 @@ public class Statics {
             TextbookSubController.class,
             TextbookLibraryController.class,
             TeacherAdminClassController.class,
-            TextbookSubController.class,
-            TextbookSubController.class,
+            PersonController.class,
+            LoginController.class,
 
     };
 

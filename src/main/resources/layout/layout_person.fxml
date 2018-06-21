@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXDialogLayout?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1"
+           xmlns="http://javafx.com/javafx/2.2">
+    <VBox maxWidth="400" maxHeight="300" spacing="20" alignment="CENTER">
+        <children>
+
+            <JFXDialogLayout fx:id="content"
+                             style="-fx-background-color: WHITE; -fx-background-radius: 3">
+                <heading>
+                    <Label>个人信息管理</Label>
+                </heading>
+                <body>
+                    <VBox fx:id="dialogGroup">
+                        <JFXTextField fx:id="textfieldOne"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldTwo"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldThree"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldFour"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldFive"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldSix"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                        <JFXTextField fx:id="textfieldSeven"
+                                      style="-fx-pref-width: 380px; -fx-max-width: 380px;"/>
+                    </VBox>
+                </body>
+                <actions>
+                    <JFXButton fx:id="commitBtn" styleClass="dialog-accept">提交
+                    </JFXButton>
+                </actions>
+            </JFXDialogLayout>
+        </children>
+    </VBox>
+
+</StackPane>

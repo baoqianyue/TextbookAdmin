@@ -26,4 +26,8 @@ public interface TeacherDao {
     //查询所有教师信息
     public List<Teacher> queryAllTeacher() throws SQLException;
 
+    //通过id查询教师信息
+    public Teacher queryTeacherById(String tno) throws SQLException;
+
+
 }

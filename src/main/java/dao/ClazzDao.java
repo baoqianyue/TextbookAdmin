@@ -16,6 +16,9 @@ public interface ClazzDao {
     //删除一个班级
     public void deleteClass(String classId) throws SQLException;
 
+    //根据id查询一个班级记录
+    public Clazz queryClassById(String cno) throws SQLException;
+
     //查询表中所有记录
     public List<Clazz> queryALLClass() throws SQLException;
 

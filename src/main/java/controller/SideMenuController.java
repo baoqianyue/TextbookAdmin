@@ -14,6 +14,9 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import main.java.app.MainApp;
 import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.utils.Statics;
 
@@ -22,6 +25,7 @@ import java.util.Objects;
 
 @ViewController(value = "../../resources/layout/layout_slide_menu.fxml")
 public class SideMenuController {
+
 
     @FXMLViewFlowContext
     private ViewFlowContext context;
@@ -61,6 +65,11 @@ public class SideMenuController {
         labelThree.setText(slideContentTitle[2]);
         labelFour.setText(slideContentTitle[3]);
         labelFive.setText(slideContentTitle[4]);
+        labelFive.setOnMouseClicked(event -> {
+            Stage stage = (Stage) labelFive.getScene().getWindow();
+            stage.close();
+            MainApp.getPrimaryStage().show();
+        });
         Objects.requireNonNull(context, "context");
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
         sideList.propagateMouseEventsToParent();
@@ -84,8 +93,8 @@ public class SideMenuController {
         bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
         bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
         bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
-//        bindNodeToController(dialogs, DialogController.class, contentFlow, contentFlowHandler);
-//        bindNodeToController(labelFive, slideContentController[1], contentFlow, contentFlowHandler);
+        bindNodeToController(labelFour, slideContentController[3], contentFlow, contentFlowHandler);
+//        bindNodeToController(labelFive, slideContentController[4], contentFlow, contentFlowHandler);
 
     }
 

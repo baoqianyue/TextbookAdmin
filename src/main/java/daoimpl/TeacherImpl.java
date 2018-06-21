@@ -1,5 +1,6 @@
 package main.java.daoimpl;
 
+import jdk.nashorn.internal.scripts.JD;
 import main.java.bean.Teacher;
 import main.java.dao.TeacherDao;
 import main.java.db.JDBCHelper;
@@ -41,7 +42,24 @@ public class TeacherImpl implements TeacherDao {
 
     @Override
     public void updateTeacher(Teacher teacher) throws SQLException {
-
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE Teacher SET Tname=?,Tsex=?,Ttel=?,Temail=?,Tpassword=? WHERE Tno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, teacher.getName());
+            ps.setString(2, teacher.getSex());
+            ps.setString(3, teacher.getTel());
+            ps.setString(4, teacher.getEmail());
+            ps.setString(5, teacher.getPassword());
+            ps.setString(6, teacher.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
     }
 
     @Override
@@ -90,6 +108,32 @@ public class TeacherImpl implements TeacherDao {
     @Override
     public List<Teacher> queryAllTeacher() throws SQLException {
         return null;
+    }
+
+    @Override
+    public Teacher queryTeacherById(String tno) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet res = null;
+        Teacher teacher = null;
+        String sql = "SELECT * FROM Teacher WHERE Tno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, tno);
+            res = ps.executeQuery();
+            if (res.next()) {
+                teacher = new Teacher(tno, res.getString(2), res.getString(3),
+                        res.getString(4), res.getString(5), res.getString(6),
+                        res.getString(7));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCHelper.closeConnection(res, ps, conn);
+        }
+        return teacher;
     }
 
 }
