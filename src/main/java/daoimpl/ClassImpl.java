@@ -23,7 +23,7 @@ public class ClassImpl implements ClazzDao {
     public void updateClass(Clazz clazz) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
-        String sql = "UPDATE Class SET Tno=?,Cnum=?,Stel=?,Sno=?,Sname=? WHERE Cno=?";
+        String sql = "UPDATE Class SET Tno=?,Cnum=?,Stel=?,Sno=?,Sname=?,Spassword=? WHERE Cno=?";
         try {
             conn = JDBCHelper.getsInstance().getConnection();
             ps = conn.prepareStatement(sql);
@@ -32,7 +32,8 @@ public class ClassImpl implements ClazzDao {
             ps.setString(3, clazz.getClassTel());
             ps.setString(4, clazz.getLeaderId());
             ps.setString(5, clazz.getLeaderName());
-            ps.setString(6, clazz.getClassId());
+            ps.setString(6, clazz.getClassPassword());
+            ps.setString(7, clazz.getClassId());
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

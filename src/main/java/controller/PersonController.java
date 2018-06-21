@@ -7,6 +7,8 @@ import io.datafx.controller.ViewController;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.java.app.MainApp;
 import main.java.bean.Clazz;
 import main.java.bean.Teacher;
 import main.java.daoimpl.ClassImpl;
@@ -84,6 +86,11 @@ public class PersonController {
                         teacherDB.updateTeacher(new Teacher(
                                 teacher.getId(), newName, newSex, teacher.getRight(), newTel, newEmail, teacher.getPassword()
                         ));
+                        if (!newPassword.equals(teacher.getPassword())) {
+                            Stage stage = (Stage) commitBtn.getScene().getWindow();
+                            stage.close();
+                            MainApp.getPrimaryStage().show();
+                        }
                         Toast.show(root, "修改信息成功");
                     } catch (SQLException e) {
                         Toast.show(root, "修改信息失败");
@@ -119,6 +126,11 @@ public class PersonController {
                             newLeaderId, newLeaderName, newPassword);
                     try {
                         classDB.updateClass(clayy);
+                        if (!newPassword.equals(clazz.getClassPassword())) {
+                            Stage stage = (Stage) commitBtn.getScene().getWindow();
+                            stage.close();
+                            MainApp.getPrimaryStage().show();
+                        }
                         Toast.show(root, "修改信息成功");
                     } catch (SQLException e) {
                         Toast.show(root, "修改信息失败");

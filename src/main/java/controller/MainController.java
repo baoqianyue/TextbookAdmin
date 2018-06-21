@@ -116,7 +116,7 @@ public final class MainController {
                 break;
             case Statics.TYPE_ADMIN:
                 currentUserType.setText(Statics.TYPE_ADMIN);
-                innerFlow = new Flow(TextbookSubController.class);
+                innerFlow = new Flow(TextbookLibraryController.class);
                 break;
             case Statics.TYPE_CLASS:
                 currentUserType.setText(Statics.TYPE_CLASS);

@@ -11,7 +11,10 @@ public interface TextBookDao {
     public void addTextBook(TextBook book) throws SQLException;
 
     //更新一种教材
-    public void updateTextBook(String bno,int bnum) throws SQLException;
+    public void updateTextBook(String bno, int bnum) throws SQLException;
+
+    //领取教材后，在教材库中更新
+    public void getTextbookUpdate(String bno, int bnum) throws SQLException;
 
     //删除一种教材
     public void deleteTextBook(String bookId) throws SQLException;

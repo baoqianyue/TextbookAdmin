@@ -54,6 +54,25 @@ public class TextbookImpl implements TextBookDao {
     }
 
     @Override
+    public void getTextbookUpdate(String bno, int bnum) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "UPDATE Textbook SET Bnum=Bnum-? WHERE Bno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, bnum);
+            ps.setString(2, bno);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new SQLException("数据更新失败");
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
+    }
+
+    @Override
     public void deleteTextBook(String bookId) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;

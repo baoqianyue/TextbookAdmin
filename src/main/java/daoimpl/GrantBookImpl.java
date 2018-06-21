@@ -42,8 +42,21 @@ public class GrantBookImpl implements BookGrantDao {
     }
 
     @Override
-    public void deleteGrantBook(BookGrant bookGrant) throws SQLException {
-
+    public void deleteGrantBook(String bno, String cno) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM BookGrant WHERE Bno=? AND Cno=?";
+        try {
+            conn = JDBCHelper.getsInstance().getConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, bno);
+            ps.setString(2, cno);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCHelper.closeConnection(null, ps, conn);
+        }
     }
 
     @Override
@@ -52,8 +65,8 @@ public class GrantBookImpl implements BookGrantDao {
         PreparedStatement ps = null;
         ResultSet res = null;
         ArrayList<ClassGetBook> data = new ArrayList<>();
-        String sql = "SELECT Bno,Bname,Sno,Sname,Bissue FROM BookGrant,Class WHERE BookGrant.Cno = Class.Cno AND" +
-                "BookGrant.Cno=?";
+        String sql = "SELECT Bno,Bname,Sno,Sname,Bissue FROM BookGrant,Class WHERE BookGrant.Cno = Class.Cno AND BookGrant.Cno=?";
+
         try {
             conn = JDBCHelper.getsInstance().getConnection();
             ps = conn.prepareStatement(sql);

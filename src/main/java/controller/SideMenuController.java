@@ -63,11 +63,36 @@ public class SideMenuController {
                 slideContentController = Statics.classSlideController;
                 initClassSlide();
                 break;
+            case Statics.TYPE_ADMIN:
+                slideContentTitle = Statics.adminSlideTitle;
+                slideContentController = Statics.adminSlideController;
+                initAdminSlide();
+                break;
         }
 
 
 //        bindNodeToController(labelFive, slideContentController[4], contentFlow, contentFlowHandler);
 
+    }
+
+    private void initAdminSlide() {
+        Objects.requireNonNull(context, "context");
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        sideList.propagateMouseEventsToParent();
+        initFlow(contentFlowHandler);
+        labelOne.setText(slideContentTitle[0]);
+        labelTwo.setText(slideContentTitle[1]);
+        labelThree.setText(slideContentTitle[2]);
+        labelFour.setText(slideContentTitle[3]);
+        labelFour.setOnMouseClicked(event -> {
+            Stage stage = (Stage) labelFour.getScene().getWindow();
+            stage.close();
+            MainApp.getPrimaryStage().show();
+        });
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+        bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
+        bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
+        bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
     }
 
     private void initClassSlide() {
@@ -86,6 +111,7 @@ public class SideMenuController {
         });
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
         bindNodeToController(labelOne, slideContentController[0], contentFlow, contentFlowHandler);
+        bindNodeToController(labelTwo, slideContentController[1], contentFlow, contentFlowHandler);
         bindNodeToController(labelThree, slideContentController[2], contentFlow, contentFlowHandler);
     }
 

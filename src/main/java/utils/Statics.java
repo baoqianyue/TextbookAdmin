@@ -3,6 +3,7 @@ package main.java.utils;
 import main.java.controller.LoginController;
 import main.java.controller.PersonController;
 import main.java.controller.TextbookLibraryController;
+import main.java.controller.admin.AdminSubGrantController;
 import main.java.controller.clazz.ClassGetTextbookController;
 import main.java.controller.teacher.TeacherAdminClassController;
 import main.java.controller.teacher.TextbookSubController;
@@ -38,6 +39,10 @@ public class Statics {
             "教材库", "领取教材", "班级信息管理", "退出登录"
     };
 
+    public static String[] adminSlideTitle = new String[]{
+            "教材库", "征订与发放教材开关", "个人信息管理", "退出登录"
+    };
+
 
     //各用户侧边栏对应Controller
     public static Class[] teacherSlideController = new Class[]{
@@ -51,6 +56,12 @@ public class Statics {
     public static Class[] classSlideController = new Class[]{
             TextbookLibraryController.class,
             ClassGetTextbookController.class,
+            PersonController.class,
+    };
+
+    public static Class[] adminSlideController = new Class[]{
+            TextbookLibraryController.class,
+            AdminSubGrantController.class,
             PersonController.class,
     };
 

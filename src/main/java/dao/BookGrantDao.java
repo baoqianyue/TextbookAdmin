@@ -14,7 +14,7 @@ public interface BookGrantDao {
     public void updateGrantBook(BookGrant bookGrant) throws SQLException;
 
     //删除一本发放教材
-    public void deleteGrantBook(BookGrant bookGrant) throws SQLException;
+    public void deleteGrantBook(String bno, String cno) throws SQLException;
 
     //多表查询
     //根据班级号连接查询
