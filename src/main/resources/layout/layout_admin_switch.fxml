@@ -9,17 +9,14 @@
            xmlns="http://javafx.com/javafx/2.2">
 
     <VBox prefWidth="300" spacing="50" maxWidth="400" maxHeight="300">
-        <Label styleClass="title-label">Toggle Buttons</Label>
-        <FlowPane hgap="26" style="-fx-padding:0 0 0 50">
-            <Label styleClass="toggle-label">Wifi (separate label)</Label>
-            <JFXToggleButton styleClass="custom-jfx-toggle-button-red">
-            </JFXToggleButton>
-        </FlowPane>
+        <Label styleClass="title-label">数据库操作开关</Label>
         <FlowPane hgap="60" style="-fx-padding:0 0 0 50">
-            <JFXToggleButton styleClass="custom-jfx-toggle-button" text="Bluetooth">
+            <JFXToggleButton fx:id="teacherSwitchTBtn" selected="true" focusTraversable="true"
+                             styleClass="custom-jfx-toggle-button"
+                             text="教师征订开关">
             </JFXToggleButton>
 
-            <JFXToggleButton text="Wifi">
+            <JFXToggleButton fx:id="classSwitchTBtn" selected="true" focusTraversable="true" text="班级发放开关">
             </JFXToggleButton>
 
         </FlowPane>
